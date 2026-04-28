@@ -32,7 +32,7 @@ typedef struct Penjaga {
 char *salinNama(char *namaAsli) {
     char *hasil = (char *) malloc((strlen(namaAsli) + 1) * sizeof(char));
 
-    if (hasil == NULL) {
+    if (hasil==NULL) {
         exit(1);
     }
 
@@ -41,23 +41,23 @@ char *salinNama(char *namaAsli) {
 }
 
 int lebihBaik(Penjaga a, Penjaga b) {
-    if (a.skor > b.skor) {
+    if (a.skor>b.skor) {
         return 1;
     }
 
-    if (a.skor < b.skor) {
+    if (a.skor<b.skor) {
         return 0;
     }
 
-    if (a.id < b.id) {
+    if (a.id<b.id) {
         return 1;
     }
 
-    if (a.id > b.id) {
+    if (a.id>b.id) {
         return 0;
     }
 
-    if (strcmp(a.nama, b.nama) < 0) {
+    if (strcmp(a.nama, b.nama)<0) {
         return 1;
     }
 
@@ -65,14 +65,10 @@ int lebihBaik(Penjaga a, Penjaga b) {
 }
 
 void printPenjaga(char *namaShift, Penjaga *data, int index) {
-    if (index == -1) {
+    if (index== -1) {
         printf("%s -\n", namaShift);
     } else {
-        printf("%s %s %d %d\n",
-               namaShift,
-               data[index].nama,
-               data[index].id,
-               data[index].skor);
+        printf("%s %s %d %d\n", namaShift, data[index].nama, data[index].id, data[index].skor);
     }
 }
 
@@ -89,11 +85,10 @@ int main() {
     data = (Penjaga *) malloc(N * sizeof(Penjaga));
 
     if (data == NULL) {
-        printf("Alokasi memori gagal.\n");
         return 1;
     }
 
-    for (int i = 0; i < N; i++) {
+    for (int i=0; i< N; i++) {
         char namaSementara[100];
 
         scanf("%s %d %s %d", namaSementara, &data[i].id, data[i].shift, &data[i].skor);
@@ -119,7 +114,7 @@ int main() {
     printPenjaga("SIANG", data, terbaikSiang);
     printPenjaga("MALAM", data, terbaikMalam);
 
-    for (int i = 0; i < N; i++) {
+    for (int i=0; i<N; i++) {
         free(data[i].nama);
     }
 
